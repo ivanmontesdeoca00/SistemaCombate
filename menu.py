@@ -12,7 +12,6 @@ class Menu:
         ##Bucle principal del menu
         while True:
             print("\n" + "="*30)
-            print ("    ASD POR TURNOS")
             print("="*30)
             print("1- Crear PJ")
             print("2- Logearte")
@@ -67,7 +66,7 @@ class Menu:
         
         #  aca verifico si existe el pj
         if nombre not in self.base_datos:
-            print("El ersonaje no se encontro en la base de datos")
+            print("El personaje no se encontro en la base de datos")
             return
 
         personaje_solicitado = self.base_datos[nombre]
