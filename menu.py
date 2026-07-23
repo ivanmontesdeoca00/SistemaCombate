@@ -1,10 +1,10 @@
 ## Aca voy a hacer el sistema interactivo con powershell para que en main.py se pueda correr
 
 from personaje import Personaje
-from sistemas import Dano
+from sistema import Dano
 
 class Menu:
-    def ___init__(self):
+    def __init__(self):
         self.base_datos = {} ##Diccionario para guardar los pjs creados
         self.usuario_actual = None
 
@@ -62,6 +62,27 @@ class Menu:
 
     def menu_login(self):
         ##Segundo menu para acceder al iniciar sesion de forma correcta
+        print("\n--- LOGIN DE PERSONAJE ---")
+        nombre = input("Nombre de personaje: ").strip()
+        
+        #  aca verifico si existe el pj
+        if nombre not in self.base_datos:
+            print("El ersonaje no se encontro en la base de datos")
+            return
+
+        personaje_solicitado = self.base_datos[nombre]
+        
+        # aca se valida la clave si es verdadera o mala
+        if personaje_solicitado.seguridad.validar_login():
+            
+            self.usuario_actual = personaje_solicitado
+            
+            print(f"Sesion iniciada: {self.usuario_actual.nombre} ({self.usuario_actual.clase_personaje})")
+
+            # paso al menu de acciones
+            self.menu_acciones()
+
+    def menu_acciones(self):
         while True:
             print("\n" + "-"*30)
             print(f"Sesion iniciada: {self.usuario_actual.nombre} ({self.usuario_actual.clase_personaje})")
@@ -82,7 +103,8 @@ class Menu:
 
 
                     # aca invocamos la clase Dano pasando las dos instancias
-                    daño_causado = Dano.calcular_y_aplicar(self.usuario_actual, defensor)
+                    from sistema import Dano
+                    daño_causado = Dano.calcular_dano(self.usuario_actual, defensor)
                     print(f"\n Le pegaste {daño_causado} de daño a {defensor.nombre}!")
                     print(f"A {defensor.nombre} le quedan {defensor.atributos.vida_actual} de vida")
                 else:
@@ -92,10 +114,10 @@ class Menu:
                 atacante = self.usuario_actual.atributos
                 print("\n--- TUS ESTADISTICAS DALEEEEEEEEE ---")
                 print(f"Clase: {self.usuario_actual.clase_personaje.capitalize()}")
-                
-                print(f"Vida Actual/maxima: {attr.vida_actual}/{attr.vida_maxima}")
-                print(f"Ataque de Base: {attr.ataque_base}")
-                print(f"Mana Actual: {attr.mana_actual}")
+
+                print(f"Vida Actual/maxima: {atacante.vida_actual}/{atacante.vida_maxima}")
+                print(f"Ataque de Base: {atacante.ataque_base}")
+                print(f"Mana Actual: {atacante.mana_actual}")
             
             elif opcion == "3":
                 self.usuario_actual = None

@@ -6,4 +6,4 @@ class Personaje:
         self.clase_personaje = clase_personaje.lower()
         # aca creo que el personaje "Tenga" atributos y una constraseña
         self.atributos = Atributos(vida_maxima, ataque_base)
-        self.contrasena = Contrasena(clave_secreta)
+        self.seguridad = Contrasena(clave_secreta)

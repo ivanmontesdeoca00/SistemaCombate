@@ -18,15 +18,15 @@ class Contrasena:
     
     def validar_login(self):
         """Este es el bucle para hacer los intentos de sesion del login"""
-    intentos = 3
-    while intentos > 0:
-        intento = input("Ingrese porfavor la contraseña: ")
-        if intento == self.clave_secreta:
-            print("Acceso concedido")
-            return True
-        else:
+        intentos = 3
+        while intentos > 0:
+            intento = input("Ingrese porfavor la contraseña: ")
+            if intento == self.clave_secreta:
+                print("Acceso concedido")
+                return True
+
             intentos -= 1
-            print(f"Contraseña incorrecta. Intentos restantes:", {intentos})
+            print(f"Contraseña incorrecta. Intentos restantes: {intentos}")
             return False
 
 class Dano:
