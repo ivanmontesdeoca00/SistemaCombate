@@ -48,3 +48,10 @@ El proyecto sigue un diseño modular para separar las responsabilidades, facilit
 
 ---
 *Desarrollado con ☕ y 🐍 por Ivan K. Montes de Oca || https://www.linkedin.com/in/iv%C3%A1n-kevin-montes-de-oca-74986a24b/ *
+
+
+<img width="468" height="163" alt="image" src="https://github.com/user-attachments/assets/e31c819a-7162-4564-8d8e-f797fb633a56" />
+<img width="464" height="192" alt="image" src="https://github.com/user-attachments/assets/ec6218ff-eae9-4ffb-9540-2b6e6359efa0" />
+<img width="388" height="355" alt="image" src="https://github.com/user-attachments/assets/2116f661-87a7-40cc-b5f7-b2353aad6a1c" />
+<img width="458" height="207" alt="image" src="https://github.com/user-attachments/assets/302f518e-3bab-4e32-921e-6b5253df0a3d" />
+<img width="609" height="58" alt="image" src="https://github.com/user-attachments/assets/6894c06f-942b-4ec0-846b-895f88def39b" />
