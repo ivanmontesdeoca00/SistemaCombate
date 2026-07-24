@@ -68,5 +68,5 @@ class Dano:
         else:
             daño_final = tres.ataque_base
         
-        tres.recibir_dano(daño_final)
+        cuatro.recibir_dano(daño_final)
         return daño_final

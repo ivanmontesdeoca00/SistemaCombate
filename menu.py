@@ -7,6 +7,8 @@ class Menu:
     def __init__(self):
         self.base_datos = {} ##Diccionario para guardar los pjs creados
         self.usuario_actual = None
+        self.diccionario_guerra = {} ## Agrego el diccionario de peleas, para guardar historial de golpes
+        self.contador_ataques = 0 
 
     def iniciar(self):
         ##Bucle principal del menu
@@ -90,8 +92,9 @@ class Menu:
             print("1 - Atacar a otro personaje")
             print("2 - Ver todas mis datos")
             print("3 - Cerrar Sesion")
+            print("4 - Ver diccionario de guerra")
 
-            opcion = input("Elegi una accion del 1 al 3: ").strip()
+            opcion = input("Elegi una accion del 1 al 4: ").strip()
 
             if opcion == "1":
                 objetivo_nombre = input("Ingrese el nombre de a quién desea atacar: ").strip()
@@ -106,6 +109,12 @@ class Menu:
                     daño_causado = Dano.calcular_dano(self.usuario_actual, defensor)
                     print(f"\n Le pegaste {daño_causado} de daño a {defensor.nombre}!")
                     print(f"A {defensor.nombre} le quedan {defensor.atributos.vida_actual} de vida")
+                    self.contador_ataques += 1
+                    self.diccionario_guerra[f"Ataque {self.contador_ataques}"] = {
+                        "atacante": self.usuario_actual.nombre,
+                        "defensor": defensor.nombre,
+                        "daño": daño_causado
+                    }
                 else:
                     print("El objetivo no existe pelotudo")
             
@@ -122,5 +131,14 @@ class Menu:
                 self.usuario_actual = None
                 print("Secion cerrada bien")
                 break
+            elif opcion == "4":
+                print("\n--- REGISTRO DEL DICCIONARIO DE GUERRA ---")
+                if not self.diccionario_guerra:
+                    print("Todavía no hay ataques registrados para mostrar.")
+                else:
+                    ## aca uso el for para recorrer el diccionario pato qlo
+                    for ataque_id, datos in self.diccionario_guerra.items():
+                        print(f"[{ataque_id}]: El PJ {datos['atacante']} le metio {datos['daño']} de daño a {datos['defensor']}.")
             else:
                 print("Opcion no valida boludito de feria")
+
